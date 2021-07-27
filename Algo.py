@@ -6,8 +6,6 @@ number_of_answers = 5
 d = {1:'A', 2:'B', 3:'C', 4:'D', 5:'E'}
 correct_answers = []
 def extract_case(img,qst_num,answer_num):
-    #img_temp = cv.resize(img,(127,376))   #Resize
-    #img_temp = img[26:-2,36:-2]
     img_temp = img[:,36:-2]
     if (qst_num > number_of_questions or answer_num > number_of_answers):
         raise Exception("question number or answer number is invalid") 
@@ -22,7 +20,7 @@ def im_show(winname,img):
             cv.destroyAllWindows()
             break
 
-def is_it_marked(img,qst_num,answer_num):    # ANOTHER APROACH : SELECT THE CASE WITH K MAX
+def is_it_marked(img,qst_num,answer_num):
     case = extract_case(img,qst_num,answer_num)
     k=0
     for i in range(17):
@@ -34,15 +32,6 @@ def is_it_marked(img,qst_num,answer_num):    # ANOTHER APROACH : SELECT THE CASE
     else:
         return False
     
-'''def answers_from_tab(img):
-    answers = ["null" for i in range(number_of_questions+1)]
-    for i in range( 1 , number_of_questions+1 ):  #questions
-        for j in range( 1 , number_of_answers+1): #answers
-            if ( is_it_marked(img,i,j) ):
-                answers[i] = d[j]
-                break
-    return answers'''
-
 def answers_from_tab(img):
     answers = ["null" for i in range(number_of_questions)]
     for i in range( 1 , number_of_questions+1 ):  #questions
@@ -73,7 +62,6 @@ def answers_from_image(img):
     for cnt in cntrs:
         x,y,w,h = cv.boundingRect(cnt)
         if 3.49 > h/w > 3.47 or 2.8 > h/w > 2.77:
-            #keys.append([y,y+h,x,x+w])
             X.append(x)
             Y.append(y)
             W.append(w)
@@ -88,7 +76,7 @@ def answers_from_image(img):
             f = np.argmin(X)
             keys.append([ Y[f] , Y[f]+H[f] , X[f] , X[f]+W[f] ])
             X[f] = 999 #close it
-    else:   # for this case, try to reorginize it ( 4, 2, 3, 1)
+    else:   
         for k in range(n):
             keys.append([ Y[k] , Y[k]+H[k] , X[k] , X[k]+W[k] ])
         t=keys[0]
@@ -105,18 +93,6 @@ def answers_from_image(img):
     a = np.array(a).flatten() # +++++
     return a
         
-
-'''def get_score(img,solution):
-    answers = answers_from_image(img)
-    n = len(answers)
-    m = np.size(answers[0])
-    score = 0
-    for i in range(n): # number of tabs
-        for j in range(1,m):
-            if answers[i][j] != 0:
-                if answers[i][j] == solution[i][j]:
-                    score+=1
-    return score'''
 def get_score(img,solution):
     answers = answers_from_image(img)
     n = len(answers)
