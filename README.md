@@ -12,3 +12,4 @@ I've added an empty copy ( blank.png ) for everyone who wants to play with and t
   - opencv-python Library
   - tkinter Library
 
+To launch AutoCor, you can execute the GUI.py file
