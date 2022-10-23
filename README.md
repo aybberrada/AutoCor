@@ -17,4 +17,4 @@ I've added an empty sheet ( blank.png ) for everyone who wants to test AutoCor.
   - opencv-python Library
   - tkinter Library
 
-To launch AutoCor, you can execute the GUI.py file
+To launch AutoCor, you can just run GUI.py.
