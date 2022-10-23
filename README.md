@@ -2,6 +2,7 @@
 AutoCor is developped in python, it uses some functions from the OpenCV library to automatically detect and extract the answers from a student's exam sheet (MCQs), then compare it with the correct answers in order to evaluate the score.
 
 To the left is an exam sheet with all the correct answers checked, which will be compared to the student's answers in the exam sheet to the right
+
 ![alt text](https://i.ibb.co/njMDqD6/Screenshot-from-2021-07-17-23-37-15.png)
 
 ![alt text](https://i.ibb.co/pnpWZR5/Screenshot-from-2021-07-17-23-38-19.png)
